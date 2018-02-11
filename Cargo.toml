@@ -1,6 +1,11 @@
 [package]
-name = "rust-example"
+name = "rust_example"
 version = "0.1.0"
-authors = ["Steve Klabnik <steve@steveklabnik.com>"]
+authors = ["Steve Klabnik <steve@steveklabnik.com>", "Nathan Ladd <nathanladd@gmail.com>"]
+
+[lib]
+name = "rust_example"
+crate_type = ["staticlib", "dylib"]
 
 [dependencies]
+libc="0.2.0"

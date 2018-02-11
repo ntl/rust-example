@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+
+ENV['TEST_BENCH_EXCLUDE_PATTERN'] ||= '_init\.rb\z'
+ENV['TEST_BENCH_TESTS_DIR'] ||= 'test/automated'
+
+require_relative '../test/test_init'
+
+require 'test_bench/cli'
+
+TestBench::CLI.() or exit 1

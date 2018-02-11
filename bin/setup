@@ -1,8 +1,9 @@
-#!/usr/bin/env bash
-set -euo pipefail
-IFS=$'\n\t'
-set -vx
+#!/usr/bin/env sh
 
-bundle install
+set -eu
 
-# Do any other automated setup that you need to do here
+if [ ! -d test/bench ]; then
+  git clone --depth 1 https://github.com/ntl/test-bench test/bench
+else
+  git -C test/bench pull origin master
+fi

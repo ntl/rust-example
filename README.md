@@ -1,33 +1,40 @@
-# RustExample
+# Rust Example Project
 
-A hello-world Ruby gem, written in Rust.
+An example rust project. Contains a ruby native extension and test suite written in ruby, using [Test Bench](https://github.com/ntl/test-bench).
 
-## Installation
+## Setting up Project
 
-Add this to your Gemfile:
+    bin/setup
 
-```ruby
-gem "rust_example"
-```
+## Compiling Rust Library
 
-## Usage
+    cargo clean
+    cargo build --release
 
-Do this:
+## Building Ruby Native Extension
 
-```ruby
-require "rust_example"
+    cp target/release/librust_example.a rubygem/ext/rust_example/
 
-puts RustExample.hello
-```
+    ruby -C rubygem/ext/rust_example extconf.rb
 
-## Development
+    make -C rubygem/ext/rust_example clean all
 
-Send PRs to the master branch. Don't worry about specifics; we can do code
-review in the PR. I am happy to review any PRs, of any "quality", so don't
-worry about it being "good enough" or something, just hit send. :)
+## Automated compilation via make
 
-## Contributing
+Incremental compilation:
 
-Bug reports and pull requests are welcome on GitHub at
-https://github.com/steveklabnik/rust_example.
+    make
 
+Full recompile:
+
+    make recompile
+
+## Testing
+
+See help:
+
+    bin/test --help
+
+Run all tests:
+
+    bin/test
